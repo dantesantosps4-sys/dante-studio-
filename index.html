@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Transforme seu delivery com um sistema profissional. Sites modernos para hamburguerias, pizzarias, restaurantes e açaiterias. Aumente suas vendas hoje.">
+<meta name="keywords" content="site para delivery, cardápio digital, sistema delivery, site hamburgueria, site pizzaria, pedido whatsapp">
+<title>DeliveryPro — Sistemas Digitais Premium para Delivery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #050508;
+  --dark: #0a0a12;
+  --card: #0f0f1a;
+  --card2: #13131f;
+  --border: rgba(255,255,255,0.07);
+  --purple: #7c3aed;
+  --purple-light: #9d5bf4;
+  --purple-glow: rgba(124,58,237,0.35);
+  --neon: #b87bff;
+  --neon-dim: rgba(184,123,255,0.15);
+  --white: #f8f8fc;
+  --gray: #6b6b80;
+  --gray-light: #9898b0;
+  --green: #22c55e;
+  --text: #e0e0f0;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4{font-family:'Syne',sans-serif;line-height:1.15}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 18px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5,5,8,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all .3s;
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--neon); }
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--gray-light);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--purple);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  transition: background .2s, transform .2s !important;
+}
+.nav-cta:hover { background: var(--purple-light) !important; transform: translateY(-1px); }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: .3s;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 5% 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 40% at 80% 80%, rgba(124,58,237,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(124,58,237,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(124,58,237,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 760px; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.3);
+  color: var(--neon);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  animation: fadeUp .6s ease both;
+}
+.hero-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--neon);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--neon);
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.5;transform:scale(.8)}
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 22px;
+  animation: fadeUp .7s .1s ease both;
+  letter-spacing: -1.5px;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--purple-light), var(--neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--gray-light);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  animation: fadeUp .7s .2s ease both;
+  font-weight: 300;
+}
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp .7s .3s ease both;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple), var(--purple-light));
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 0 30px var(--purple-glow);
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px var(--purple-glow), 0 8px 24px rgba(0,0,0,.4);
+}
+.btn-ghost {
+  background: rgba(255,255,255,0.06);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 64px;
+  animation: fadeUp .7s .4s ease both;
+  flex-wrap: wrap;
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--purple-light), var(--neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label { font-size: 0.78rem; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; margin-top: 4px; }
+
+/* SECTIONS */
+section { padding: 90px 5%; }
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--neon);
+  margin-bottom: 14px;
+}
+.section-tag::before {
+  content: '';
+  width: 18px; height: 2px;
+  background: var(--purple);
+}
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.section-sub {
+  color: var(--gray-light);
+  font-size: 1rem;
+  max-width: 560px;
+  font-weight: 300;
+}
+.section-header { margin-bottom: 56px; }
+
+/* BENEFITS */
+.benefits { background: var(--dark); }
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+.benefit-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+  cursor: default;
+}
+.benefit-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124,58,237,0.4);
+  box-shadow: 0 0 30px rgba(124,58,237,0.12);
+}
+.benefit-icon {
+  width: 48px; height: 48px;
+  background: rgba(124,58,237,0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 18px;
+}
+.benefit-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.benefit-card p {
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* FEATURES */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 48px;
+}
+.feature-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color .2s, background .2s;
+}
+.feature-item:hover {
+  border-color: rgba(124,58,237,0.35);
+  background: rgba(124,58,237,0.08);
+}
+.feature-check {
+  width: 28px; height: 28px;
+  min-width: 28px;
+  background: rgba(34,197,94,0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: 0.8rem;
+}
+.feature-item span {
+  font-size: 0.875rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* DEMO */
+.demo-section { background: var(--dark); }
+.demo-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.demo-tab {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--gray-light);
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.demo-tab.active, .demo-tab:hover {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.menu-card {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 18px;
+  transition: transform .2s, border-color .2s;
+  position: relative;
+  overflow: hidden;
+}
+.menu-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--neon));
+  opacity: 0;
+  transition: opacity .2s;
+}
+.menu-card:hover { transform: translateY(-3px); border-color: rgba(124,58,237,0.3); }
+.menu-card:hover::before { opacity: 1; }
+.menu-emoji {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  display: block;
+  filter: grayscale(0);
+}
+.menu-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.menu-card .ingredients {
+  font-size: 0.75rem;
+  color: var(--gray);
+  margin-bottom: 14px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+.menu-card .price {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--neon);
+  margin-bottom: 12px;
+}
+.add-btn {
+  width: 100%;
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.3);
+  color: var(--neon);
+  padding: 9px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.add-btn:hover { background: var(--purple); border-color: var(--purple); color: #fff; transform: scale(1.02); }
+.add-btn.added { background: rgba(34,197,94,0.2); border-color: rgba(34,197,94,0.4); color: var(--green); }
+
+/* CART BUTTON */
+.cart-fab {
+  position: fixed;
+  bottom: 88px;
+  right: 24px;
+  z-index: 999;
+  background: linear-gradient(135deg, var(--purple), var(--purple-light));
+  border: none;
+  border-radius: 50px;
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 24px var(--purple-glow);
+  transition: transform .2s, box-shadow .2s;
+  opacity: 0;
+  pointer-events: none;
+}
+.cart-fab.visible { opacity: 1; pointer-events: all; }
+.cart-fab:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 36px var(--purple-glow); }
+.cart-count {
+  background: #fff;
+  color: var(--purple);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  min-width: 22px;
+}
+
+/* CART SIDEBAR */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.cart-overlay.open { opacity: 1; pointer-events: all; }
+.cart-sidebar {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(420px, 100vw);
+  background: var(--dark);
+  border-left: 1px solid var(--border);
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.cart-sidebar.open { transform: translateX(0); }
+.cart-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.close-btn {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: var(--white);
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.close-btn:hover { background: rgba(255,255,255,0.15); }
+.cart-items { flex: 1; overflow-y: auto; padding: 20px 24px; }
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.cart-item-emoji { font-size: 1.6rem; }
+.cart-item-info { flex: 1; }
+.cart-item-name { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+.cart-item-price { font-size: 0.8rem; color: var(--neon); font-weight: 600; margin-top: 2px; }
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+.qty-btn {
+  background: none;
+  border: none;
+  color: var(--neon);
+  font-size: 1rem;
+  cursor: pointer;
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  transition: color .2s;
+  font-weight: 700;
+}
+.qty-btn:hover { color: #fff; }
+.qty-num { font-size: 0.9rem; font-weight: 600; color: var(--white); min-width: 16px; text-align: center; }
+.remove-item { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 0.8rem; transition: color .2s; }
+.remove-item:hover { color: #ef4444; }
+.cart-footer { padding: 20px 24px; border-top: 1px solid var(--border); }
+.cart-totals { margin-bottom: 20px; }
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  color: var(--gray-light);
+}
+.total-row.final {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  padding-top: 12px;
+  margin-top: 6px;
+  border-top: 1px solid var(--border);
+}
+.total-row.final .val { color: var(--neon); font-size: 1.1rem; }
+.empty-cart { text-align: center; padding: 48px 0; color: var(--gray); }
+.empty-cart .ec-icon { font-size: 3rem; margin-bottom: 14px; }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(12px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(.95) translateY(20px);
+  transition: transform .3s;
+}
+.modal-overlay.open .modal { transform: scale(1) translateY(0); }
+.modal-header {
+  padding: 24px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-header h3 { font-size: 1.15rem; font-weight: 700; color: var(--white); }
+.modal-body { padding: 24px; }
+.form-section { margin-bottom: 28px; }
+.form-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--neon);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 0.8rem; color: var(--gray-light); margin-bottom: 6px; font-weight: 500; }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: var(--white);
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color .2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--purple); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
+.form-group select option { background: var(--dark); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pay-option {
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-light);
+}
+.pay-option:hover { border-color: rgba(124,58,237,0.4); color: var(--white); }
+.pay-option.selected { border-color: var(--purple); background: rgba(124,58,237,0.15); color: var(--neon); }
+.pay-icon { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+
+/* PERSUASION */
+.persuasion { background: var(--dark); }
+.persuasion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 48px;
+}
+.persuasion-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px 26px;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, border-color .25s;
+}
+.persuasion-card::after {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.persuasion-card:hover { transform: translateY(-4px); border-color: rgba(124,58,237,0.35); }
+.p-stat {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--purple-light), var(--neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.persuasion-card h4 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.persuasion-card p { font-size: 0.85rem; color: var(--gray-light); line-height: 1.65; font-weight: 300; }
+
+/* PRICING */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 30px;
+  text-align: center;
+  transition: transform .25s, border-color .25s;
+  position: relative;
+}
+.price-card.featured {
+  border-color: rgba(124,58,237,0.5);
+  background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(5,5,8,0.8));
+  box-shadow: 0 0 60px rgba(124,58,237,0.15);
+}
+.price-card:hover { transform: translateY(-6px); }
+.price-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--purple), var(--neon));
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+.price-icon { font-size: 2.5rem; margin-bottom: 18px; display: block; }
+.price-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.price-card .price-desc { font-size: 0.82rem; color: var(--gray-light); margin-bottom: 24px; font-weight: 300; }
+.price-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 24px;
+}
+.price-amount .currency { font-size: 1.2rem; vertical-align: super; color: var(--gray-light); }
+.price-features { list-style: none; margin-bottom: 30px; text-align: left; }
+.price-features li {
+  padding: 7px 0;
+  font-size: 0.85rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.price-features li::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+/* CTA SECTION */
+.cta-section {
+  text-align: center;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(124,58,237,0.15) 0%, transparent 70%),
+              var(--dark);
+  padding: 100px 5%;
+}
+.cta-section h2 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+}
+.cta-section p { font-size: 1rem; color: var(--gray-light); margin-bottom: 40px; font-weight: 300; }
+
+/* WHATSAPP FAB */
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  background: #25D366;
+  border-radius: 50%;
+  width: 58px; height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+  transition: transform .2s, box-shadow .2s;
+  animation: wa-pulse 3s ease infinite;
+}
+.wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 36px rgba(37,211,102,0.6); animation: none; }
+@keyframes wa-pulse {
+  0%,100%{box-shadow: 0 4px 24px rgba(37,211,102,0.4)}
+  50%{box-shadow: 0 4px 40px rgba(37,211,102,0.65), 0 0 0 8px rgba(37,211,102,0.1)}
+}
+.wa-fab svg { width: 30px; height: 30px; fill: #fff; }
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 40px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--white); }
+.footer-logo span { color: var(--neon); }
+.footer-copy { font-size: 0.78rem; color: var(--gray); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* MOBILE NAV */
+.mobile-menu {
+  position: fixed;
+  top: 70px; left: 0; right: 0;
+  background: rgba(10,10,18,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 5%;
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 999;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 140px;
+  right: 24px;
+  background: var(--card2);
+  border: 1px solid rgba(34,197,94,0.4);
+  color: var(--white);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 5000;
+  transform: translateX(120%);
+  transition: transform .3s;
+  max-width: 220px;
+}
+.toast.show { transform: translateX(0); }
+.toast-green { border-color: rgba(34,197,94,0.5); }
+
+/* CHECKOUT SUCCESS */
+.success-modal { text-align: center; padding: 40px 24px; }
+.success-icon { font-size: 4rem; margin-bottom: 16px; }
+.success-modal h3 { font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+.success-modal p { font-size: 0.9rem; color: var(--gray-light); margin-bottom: 28px; font-weight: 300; }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .nav-links { display: none; }
+  nav .btn-primary { display: none; }
+  .hamburger { display: flex; }
+  .hero h1 { font-size: 2rem; }
+  .benefits-grid, .features-grid, .persuasion-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .payment-grid { grid-template-columns: 1fr 1fr; }
+  .cart-sidebar { width: 100vw; }
+  footer { flex-direction: column; text-align: center; }
+  .hero-stats { gap: 28px; }
+  .demo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:420px){
+  .demo-grid { grid-template-columns: 1fr; }
+  .cart-fab { padding: 12px 16px; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Delivery<span>Pro</span></div>
+  <ul class="nav-links">
+    <li><a href="#beneficios">Benefícios</a></li>
+    <li><a href="#funcionalidades">Funcionalidades</a></li>
+    <li><a href="#demo">Demonstração</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="https://wa.me/5588981222518?text=Olá%2C+vi+seu+site+e+gostaria+de+solicitar+um+orçamento." target="_blank" class="nav-cta">Solicitar Orçamento</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#beneficios" onclick="closeMobileMenu()">Benefícios</a>
+  <a href="#funcionalidades" onclick="closeMobileMenu()">Funcionalidades</a>
+  <a href="#demo" onclick="closeMobileMenu()">Demonstração</a>
+  <a href="#planos" onclick="closeMobileMenu()">Planos</a>
+  <a href="https://wa.me/5588981222518?text=Olá%2C+vi+seu+site+e+gostaria+de+solicitar+um+orçamento." target="_blank">💬 Solicitar Orçamento</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Sistemas Digitais para Delivery</div>
+    <h1>Seu delivery merece um<br><span class="highlight">sistema profissional.</span></h1>
+    <p>Transforme pedidos em vendas com um site moderno, rápido e automatizado. Seu cardápio digital integrado ao WhatsApp.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5588981222518?text=Olá%2C+vi+seu+site+e+gostaria+de+solicitar+um+orçamento." target="_blank" class="btn-primary">Solicitar Orçamento</a>
+      <a href="#demo" class="btn-ghost">Ver Demonstração</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">+73%</div>
+        <div class="stat-label">Mais Vendas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Online Sempre</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">+200</div>
+        <div class="stat-label">Clientes Ativos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">R$100</div>
+        <div class="stat-label">A partir de</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits fade-in" id="beneficios">
+  <div class="section-header">
+    <div class="section-tag">Por que investir?</div>
+    <h2 class="section-title">Um site muda tudo<br>no seu delivery</h2>
+    <p class="section-sub">Clientes que encontram facilidade para pedir compram mais — e voltam.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">🏆</div>
+      <h3>Profissionalismo imediato</h3>
+      <p>Seu negócio ganha credibilidade instantânea. Um site bem feito transmite seriedade e confiança ao cliente.</p>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">📈</div>
+      <h3>Mais vendas garantidas</h3>
+      <p>Facilidade no pedido = mais conversões. Clientes tendem a pedir mais quando o processo é simples e intuitivo.</p>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">📱</div>
+      <h3>Pedido pelo celular</h3>
+      <p>Interface mobile-first, otimizada para qualquer smartphone. Seu cliente pede de qualquer lugar em segundos.</p>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">🗂️</div>
+      <h3>Cardápio organizado</h3>
+      <p>Categorias, combos, adicionais e bebidas — tudo estruturado para facilitar a escolha e aumentar o ticket médio.</p>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">⚡</div>
+      <h3>Pedidos automatizados</h3>
+      <p>O pedido chega direto no seu WhatsApp com todas as informações já formatadas. Sem confusão, sem retrabalho.</p>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">🎯</div>
+      <h3>Supere a concorrência</h3>
+      <p>Enquanto outros recebem pedido por mensagem bagunçada, você tem um sistema profissional que impressiona.</p>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">🔒</div>
+      <h3>Mais credibilidade</h3>
+      <p>Um sistema digital moderno mostra que seu negócio é sério. Clientes confiam mais e indicam mais.</p>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">💰</div>
+      <h3>Ticket médio maior</h3>
+      <p>Com adicionais, combos e promoções visíveis, o cliente naturalmente agrega mais itens ao pedido.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="fade-in" id="funcionalidades">
+  <div class="section-header">
+    <div class="section-tag">Funcionalidades</div>
+    <h2 class="section-title">Tudo que seu delivery precisa</h2>
+    <p class="section-sub">Sistema completo, pronto para o dia a dia do seu negócio.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Cardápio digital completo</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Carrinho de compras</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Pedido automático no WhatsApp</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Sistema de adicionais</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Área de observações</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Categorias organizadas</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Área de combos</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Área de bebidas</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Seção de promoções</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>100% responsivo</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Integração com aplicativo</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Interface premium</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Alta performance</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Layout exclusivo</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>Fácil de usar</span></div>
+    <div class="feature-item fade-in"><div class="feature-check">✓</div><span>SEO otimizado</span></div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo-section fade-in" id="demo">
+  <div class="section-header">
+    <div class="section-tag">Demonstração ao vivo</div>
+    <h2 class="section-title">Experimente o sistema</h2>
+    <p class="section-sub">Adicione produtos ao carrinho e finalize um pedido real pelo WhatsApp.</p>
+  </div>
+  <div class="demo-tabs">
+    <button class="demo-tab active" onclick="filterMenu('burgers',this)">🍔 Hambúrgueres</button>
+    <button class="demo-tab" onclick="filterMenu('pizzas',this)">🍕 Pizzas</button>
+    <button class="demo-tab" onclick="filterMenu('drinks',this)">🥤 Bebidas</button>
+    <button class="demo-tab" onclick="filterMenu('combos',this)">🎁 Combos</button>
+    <button class="demo-tab" onclick="filterMenu('acai',this)">🍧 Açaí</button>
+  </div>
+  <div class="demo-grid" id="menuGrid"></div>
+</section>
+
+<!-- PERSUASION -->
+<section class="persuasion fade-in">
+  <div class="section-header">
+    <div class="section-tag">Dados que convencem</div>
+    <h2 class="section-title">Números que falam<br>por si só</h2>
+    <p class="section-sub">O mercado de delivery digital cresce todo ano. Seu negócio precisa acompanhar.</p>
+  </div>
+  <div class="persuasion-grid">
+    <div class="persuasion-card fade-in">
+      <div class="p-stat">87%</div>
+      <h4>Preferem sistemas organizados</h4>
+      <p>Pesquisas mostram que clientes preferem pedir em sistemas digitais organizados do que por mensagem bagunçada.</p>
+    </div>
+    <div class="persuasion-card fade-in">
+      <div class="p-stat">3×</div>
+      <h4>Mais confiança transmitida</h4>
+      <p>Um site profissional multiplica a percepção de credibilidade do seu negócio perante novos clientes.</p>
+    </div>
+    <div class="persuasion-card fade-in">
+      <div class="p-stat">+40%</div>
+      <h4>Ticket médio aumenta</h4>
+      <p>Clientes que visualizam um cardápio bem estruturado com combos e adicionais gastam significativamente mais.</p>
+    </div>
+    <div class="persuasion-card fade-in">
+      <div class="p-stat">92%</div>
+      <h4>Abandono por dificuldade</h4>
+      <p>Clientes desistem da compra quando o processo de pedido é confuso ou demorado. Facilidade converte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="fade-in" id="planos">
+  <div class="section-header" style="text-align:center">
+    <div class="section-tag" style="justify-content:center">Investimento</div>
+    <h2 class="section-title">Planos acessíveis</h2>
+    <p class="section-sub" style="margin:0 auto">Sem mensalidade. Você paga uma vez e fica com o site para sempre.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card fade-in">
+      <span class="price-icon">💻</span>
+      <h3>Site Profissional</h3>
+      <p class="price-desc">Cardápio digital completo com pedido via WhatsApp</p>
+      <div class="price-amount"><span class="currency">R$</span>100</div>
+      <ul class="price-features">
+        <li>Cardápio digital completo</li>
+        <li>Carrinho de compras</li>
+        <li>Pedido automático no WhatsApp</li>
+        <li>100% responsivo</li>
+        <li>Layout exclusivo</li>
+        <li>Entrega em até 3 dias</li>
+      </ul>
+      <a href="https://wa.me/5588981222518?text=Olá%2C+quero+o+plano+Site+Profissional+por+R%24100." target="_blank" class="btn-primary" style="display:block;text-align:center;text-decoration:none">Quero este plano</a>
+    </div>
+    <div class="price-card featured fade-in">
+      <div class="price-badge">✨ Mais Completo</div>
+      <span class="price-icon">📱</span>
+      <h3>Site + Aplicativo</h3>
+      <p class="price-desc">Tudo do plano anterior + integração em aplicativo móvel</p>
+      <div class="price-amount"><span class="currency">R$</span>250</div>
+      <ul class="price-features">
+        <li>Tudo do plano anterior</li>
+        <li>Integração em aplicativo</li>
+        <li>Ícone na tela do celular</li>
+        <li>Experiência nativa mobile</li>
+        <li>Notificações para clientes</li>
+        <li>Suporte prioritário</li>
+      </ul>
+      <a href="https://wa.me/5588981222518?text=Olá%2C+quero+o+plano+Site+%2B+Aplicativo+por+R%24250." target="_blank" class="btn-primary" style="display:block;text-align:center;text-decoration:none">Quero este plano</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade-in">
+  <div class="section-tag" style="justify-content:center;margin-bottom:20px">Pronto para começar?</div>
+  <h2>Seu concorrente já tem.<br><span style="background:linear-gradient(135deg,#9d5bf4,#b87bff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">E você?</span></h2>
+  <p>Não perca mais clientes por falta de um sistema profissional.<br>Entre em contato agora e receba seu site em até 3 dias.</p>
+  <a href="https://wa.me/5588981222518?text=Olá%2C+vi+seu+site+e+gostaria+de+solicitar+um+orçamento." target="_blank" class="btn-primary" style="font-size:1rem;padding:16px 40px">💬 Solicitar Orçamento Agora</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Delivery<span>Pro</span></div>
+  <div class="footer-copy">© 2025 DeliveryPro. Todos os direitos reservados.</div>
+</footer>
+
+<!-- CART FAB -->
+<button class="cart-fab" id="cartFab" onclick="openCart()">
+  🛒 Carrinho <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Seu Carrinho</h3>
+    <button class="close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItemsList"></div>
+  <div class="cart-footer">
+    <div class="cart-totals">
+      <div class="total-row"><span>Subtotal</span><span id="subtotalVal">R$ 0,00</span></div>
+      <div class="total-row"><span>Taxa de entrega</span><span>R$ 5,00</span></div>
+      <div class="total-row final"><span>Total</span><span class="val" id="totalVal">R$ 0,00</span></div>
+    </div>
+    <button class="btn-primary" style="width:100%;padding:14px" onclick="openCheckout()">Finalizar Pedido →</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal" id="checkoutModal">
+    <div class="modal-header">
+      <h3>📦 Finalizar Pedido</h3>
+      <button class="close-btn" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-section">
+        <div class="form-section-title">👤 Seus dados</div>
+        <div class="form-group">
+          <label>Nome completo *</label>
+          <input type="text" id="f-name" placeholder="Seu nome">
+        </div>
+        <div class="form-group">
+          <label>Telefone *</label>
+          <input type="tel" id="f-phone" placeholder="(00) 00000-0000">
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">📍 Endereço de entrega</div>
+        <div class="form-group">
+          <label>Endereço *</label>
+          <input type="text" id="f-street" placeholder="Rua, Avenida...">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Número *</label>
+            <input type="text" id="f-number" placeholder="Nº">
+          </div>
+          <div class="form-group">
+            <label>Bairro *</label>
+            <input type="text" id="f-neighborhood" placeholder="Bairro">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Complemento</label>
+            <input type="text" id="f-complement" placeholder="Apto, Bloco...">
+          </div>
+          <div class="form-group">
+            <label>Referência</label>
+            <input type="text" id="f-ref" placeholder="Perto de...">
+          </div>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">💳 Forma de pagamento</div>
+        <div class="payment-grid">
+          <div class="pay-option" onclick="selectPayment('Pix',this)">
+            <span class="pay-icon">💠</span>Pix
+          </div>
+          <div class="pay-option" onclick="selectPayment('Dinheiro',this)">
+            <span class="pay-icon">💵</span>Dinheiro
+          </div>
+          <div class="pay-option" onclick="selectPayment('Crédito',this)">
+            <span class="pay-icon">💳</span>Crédito
+          </div>
+          <div class="pay-option" onclick="selectPayment('Débito',this)">
+            <span class="pay-icon">🏦</span>Débito
+          </div>
+        </div>
+        <div class="form-group" id="troco-group" style="margin-top:12px;display:none">
+          <label>Troco para quanto?</label>
+          <input type="text" id="f-troco" placeholder="Ex: R$ 50,00">
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-section-title">📝 Observações</div>
+        <div class="form-group">
+          <textarea id="f-obs" rows="3" placeholder="Alguma observação para o pedido?"></textarea>
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%;padding:15px;font-size:1rem" onclick="sendOrder()">
+        📲 Enviar pelo WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successOverlay">
+  <div class="modal" id="successModal">
+    <div class="success-modal">
+      <div class="success-icon">🎉</div>
+      <h3>Pedido enviado com sucesso!</h3>
+      <p>Sua mensagem foi gerada e você será redirecionado para o WhatsApp para confirmar o pedido.</p>
+      <button class="btn-primary" style="padding:13px 32px" onclick="closeSuccess()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/5588981222518?text=Olá%2C+vi+seu+site+e+gostaria+de+solicitar+um+orçamento." target="_blank" class="wa-fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+// ─── MENU DATA ───────────────────────────────────────────────────────────────
+const menuData = {
+  burgers: [
+    { id:'b1', name:'Classic Smash', ingredients:'Carne smash, queijo americano, alface, tomate, cebola caramelizada', price:28.90, emoji:'🍔' },
+    { id:'b2', name:'Double Bacon', ingredients:'Dupla carne, bacon crocante, queijo cheddar, molho especial', price:38.90, emoji:'🍔' },
+    { id:'b3', name:'Crispy Chicken', ingredients:'Frango empanado, queijo, alface, mayo de alho, pão brioche', price:32.90, emoji:'🍗' },
+    { id:'b4', name:'Veggie Burger', ingredients:'Hambúrguer de grão-de-bico, avocado, rúcula, tomate seco', price:26.90, emoji:'🌿' },
+  ],
+  pizzas: [
+    { id:'p1', name:'Calabresa Artesanal', ingredients:'Molho pomodoro, calabresa artesanal, cebola roxa, azeitona', price:45.90, emoji:'🍕' },
+    { id:'p2', name:'Quatro Queijos', ingredients:'Mozzarella, provolone, gorgonzola, parmesão ralado', price:52.90, emoji:'🍕' },
+    { id:'p3', name:'Frango c/ Catupiry', ingredients:'Molho branco, frango desfiado, catupiry original, orégano', price:48.90, emoji:'🍕' },
+    { id:'p4', name:'Margherita', ingredients:'Molho de tomate, mozzarella fresca, manjericão, azeite', price:42.90, emoji:'🍕' },
+  ],
+  drinks: [
+    { id:'d1', name:'Refrigerante 350ml', ingredients:'Coca-Cola, Guaraná, Fanta ou Sprite', price:6.90, emoji:'🥤' },
+    { id:'d2', name:'Suco Natural 500ml', ingredients:'Laranja, limão, abacaxi ou maracujá', price:10.90, emoji:'🧃' },
+    { id:'d3', name:'Água sem gás 500ml', ingredients:'Água mineral natural gelada', price:4.90, emoji:'💧' },
+    { id:'d4', name:'Milk Shake 400ml', ingredients:'Chocolate, morango, baunilha ou Oreo', price:18.90, emoji:'🥛' },
+  ],
+  combos: [
+    { id:'c1', name:'Combo Família', ingredients:'2 hambúrgueres + 2 refrigerantes + batata frita grande', price:68.90, emoji:'👨‍👩‍👧' },
+    { id:'c2', name:'Combo Casal', ingredients:'2 hambúrgueres + 2 sucos naturais + porção média', price:72.90, emoji:'💑' },
+    { id:'c3', name:'Combo Solo', ingredients:'1 hambúrguer + 1 refrigerante + batata frita pequena', price:34.90, emoji:'⭐' },
+    { id:'c4', name:'Combo Pizza + Bebida', ingredients:'1 pizza média + 2 refrigerantes + sobremesa', price:79.90, emoji:'🎉' },
+  ],
+  acai: [
+    { id:'a1', name:'Açaí Puro 500ml', ingredients:'Açaí puro, granola, banana, mel, leite condensado', price:22.90, emoji:'🍧' },
+    { id:'a2', name:'Açaí Tropical 700ml', ingredients:'Açaí, morango, kiwi, granola premium, coco ralado', price:29.90, emoji:'🍧' },
+    { id:'a3', name:'Açaí Fit 400ml', ingredients:'Açaí sem adição de açúcar, chia, frutas vermelhas', price:19.90, emoji:'💪' },
+    { id:'a4', name:'Açaí Gourmet 1L', ingredients:'Açaí cremoso, nutella, paçoca, granola, leite condensado', price:42.90, emoji:'🌟' },
+  ]
+};
+
+let currentCategory = 'burgers';
+let cart = JSON.parse(localStorage.getItem('dp_cart') || '[]');
+let selectedPayment = '';
+
+function filterMenu(cat, btn) {
+  currentCategory = cat;
+  document.querySelectorAll('.demo-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderMenu();
+}
+
+function renderMenu() {
+  const grid = document.getElementById('menuGrid');
+  const items = menuData[currentCategory];
+  grid.innerHTML = items.map(item => {
+    const inCart = cart.find(c => c.id === item.id);
+    return `
+    <div class="menu-card">
+      <span class="menu-emoji">${item.emoji}</span>
+      <h4>${item.name}</h4>
+      <div class="ingredients">${item.ingredients}</div>
+      <div class="price">R$ ${item.price.toFixed(2).replace('.',',')}</div>
+      <button class="add-btn ${inCart?'added':''}" onclick="addToCart('${item.id}','${item.name}',${item.price},'${item.emoji}',this)">
+        ${inCart ? '✓ Adicionado' : '+ Adicionar ao carrinho'}
+      </button>
+    </div>`;
+  }).join('');
+}
+
+function addToCart(id, name, price, emoji, btn) {
+  const existing = cart.find(c => c.id === id);
+  if (existing) { existing.qty++; }
+  else { cart.push({ id, name, price, emoji, qty: 1 }); }
+  saveCart();
+  btn.classList.add('added');
+  btn.textContent = '✓ Adicionado';
+  updateCartUI();
+  showToast(`${emoji} ${name} adicionado!`);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  saveCart();
+  updateCartUI();
+  renderMenu();
+  renderCart();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) { removeFromCart(id); return; }
+  saveCart();
+  updateCartUI();
+  renderCart();
+}
+
+function saveCart() {
+  localStorage.setItem('dp_cart', JSON.stringify(cart));
+}
+
+function updateCartUI() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById('cartCount').textContent = total;
+  const fab = document.getElementById('cartFab');
+  fab.classList.toggle('visible', total > 0);
+  document.getElementById('subtotalVal').textContent = fmt(subtotal);
+  document.getElementById('totalVal').textContent = fmt(subtotal + (cart.length > 0 ? 5 : 0));
+}
+
+function renderCart() {
+  const el = document.getElementById('cartItemsList');
+  if (!cart.length) {
+    el.innerHTML = `<div class="empty-cart"><div class="ec-icon">🛒</div><p>Seu carrinho está vazio</p></div>`;
+    return;
+  }
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <span class="cart-item-emoji">${item.emoji}</span>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">R$ ${(item.price * item.qty).toFixed(2).replace('.',',')}</div>
+      </div>
+      <div class="qty-controls">
+        <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+      </div>
+      <button class="remove-item" onclick="removeFromCart('${item.id}')">✕</button>
+    </div>
+  `).join('');
+}
+
+function openCart() {
+  renderCart();
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartSidebar').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openCheckout() {
+  if (!cart.length) { showToast('Carrinho vazio!'); return; }
+  closeCart();
+  document.getElementById('checkoutOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectPayment(type, el) {
+  selectedPayment = type;
+  document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('troco-group').style.display = type === 'Dinheiro' ? 'block' : 'none';
+}
+
+function sendOrder() {
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  const street = document.getElementById('f-street').value.trim();
+  const num = document.getElementById('f-number').value.trim();
+  const neigh = document.getElementById('f-neighborhood').value.trim();
+  const comp = document.getElementById('f-complement').value.trim();
+  const ref = document.getElementById('f-ref').value.trim();
+  const obs = document.getElementById('f-obs').value.trim();
+  const troco = document.getElementById('f-troco').value.trim();
+
+  if (!name || !phone || !street || !num || !neigh) {
+    showToast('⚠️ Preencha os campos obrigatórios!'); return;
+  }
+  if (!selectedPayment) {
+    showToast('⚠️ Escolha a forma de pagamento!'); return;
+  }
+
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const total = subtotal + 5;
+  const items = cart.map(i => `• ${i.emoji} ${i.name} x${i.qty} — R$ ${(i.price*i.qty).toFixed(2).replace('.',',')}`).join('\n');
+
+  let address = `${street}, ${num} — ${neigh}`;
+  if (comp) address += ` / ${comp}`;
+  if (ref) address += ` (Ref: ${ref})`;
+
+  let payInfo = selectedPayment;
+  if (selectedPayment === 'Dinheiro' && troco) payInfo += ` — Troco para ${troco}`;
+
+  const msg = `━━━━━━━━━━━━━━━━━━━
+🛒 NOVO PEDIDO
+━━━━━━━━━━━━━━━━━━━
+
+👤 Cliente: ${name}
+📞 Telefone: ${phone}
+
+📍 Endereço:
+${address}
+
+🍔 Pedido:
+${items}
+
+💳 Pagamento: ${payInfo}
+${obs ? `\n📝 Observações: ${obs}\n` : ''}
+💵 Subtotal: ${fmt(subtotal)}
+🛵 Taxa de entrega: ${fmt(5)}
+💰 Total: ${fmt(total)}
+
+━━━━━━━━━━━━━━━━━━━`;
+
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/5588981222518?text=${encoded}`, '_blank');
+  closeCheckout();
+  document.getElementById('successOverlay').classList.add('open');
+  cart = [];
+  saveCart();
+  updateCartUI();
+  renderMenu();
+}
+
+function closeSuccess() {
+  document.getElementById('successOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function fmt(val) {
+  return 'R$ ' + val.toFixed(2).replace('.',',');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ─── HAMBURGER MENU ───────────────────────────────────────────────────────────
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ─── SCROLL ANIMATIONS ────────────────────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+renderMenu();
+updateCartUI();
+
+// Close success overlay on click outside
+document.getElementById('successOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeSuccess();
+});
+document.getElementById('checkoutOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeCheckout();
+});
+</script>
+</body>
+</html>
